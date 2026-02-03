@@ -36,9 +36,14 @@
 
 //#define AUTOSTART_ONRPI 1
 
+#ifdef PLATFORM_LINUX
+
 extern "C" {
 #include <gpiod.h>
 }
+#endif
+
+
 
 enum SOCKET_STATE{
     SOCKET_IDDLE,
@@ -161,10 +166,13 @@ private slots:
 
     void on_btnTestFall_clicked();
     void on_btnTestFall2_clicked();
+    void on_btnPlaySound_clicked();
 
+
+#ifdef PLATFORM_LINUX
     void on_btnColor1_clicked();
 
-    void on_pushButton2_clicked();
+    void on_btnColor2_clicked();
 
     void on_btnColor3_clicked();
 
@@ -176,13 +184,13 @@ private slots:
 
     void on_btnsetBrightness_clicked();
 
-    void on_btnPlaySound_clicked();
 
     void on_btnGetVol_clicked();
 
     void on_hsVol_valueChanged(int value);
 
     void on_btnsetVol_clicked();
+#endif
 
 private:
     Ui::MainWindow *ui;
@@ -231,8 +239,11 @@ private:
     QTimer *m_socketTimer2;
     QTimer *m_initRadarTimer2;
 
+#ifdef PLATFORM_LINUX
+
     gpiod_line *line17;
     gpiod_line *line27;
+#endif
 
     //QCustomPlot *m_plot;
 
@@ -269,6 +280,7 @@ private:
     void socketIO_Client_Disconnect();
     void socketIO_Client_Disconnect2();
 
+#ifdef PLATFORM_LINUX
     //GPIO LEd strip
     int setupGPIO();
     void setColor(qint8 color);
@@ -281,6 +293,7 @@ private:
     int getVolumePercent();                 // return 0–100, -1 jika gagal
     bool setVolumePercent(int percent);     // set 0–100%
     bool mute(bool enable);                 // true = mute, false = unmute
+#endif
 
 };
 

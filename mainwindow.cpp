@@ -48,7 +48,9 @@ MainWindow::MainWindow(QWidget *parent) :
     socketState = SOCKET_IDDLE;
     socketIO_Client_Prepare();
 
+#ifdef PLATFORM_LINUX
     setupGPIO();
+#endif
 
 #ifdef AUTOSTART_ONRPI
     ui->cbSocket->setChecked(true);
@@ -2749,7 +2751,7 @@ void MainWindow::socketIO_Client_Disconnect2()
     }
 }
 
-//------------------------------------------------------------------------
+#ifdef PLATFORM_LINUX
 int MainWindow::setupGPIO()
 {
     const char *chipname = "gpiochip4";   // RPi 5
@@ -2872,6 +2874,7 @@ bool MainWindow::setVolumePercent(int percent)
            proc.exitCode() == 0;
 
 }
+#endif
 
 //------------------------------------------------------------------------
 void MainWindow::on_btnTestFall_clicked()
@@ -2893,13 +2896,21 @@ void MainWindow::on_btnTestFall2_clicked()
 }
 
 //------------------------------------------------------------------------
+void MainWindow::on_btnPlaySound_clicked()
+{
+    sound.stop();
+    sound.play();
+}
+
+#ifdef PLATFORM_LINUX
+//------------------------------------------------------------------------
 void MainWindow::on_btnColor1_clicked()
 {
     setColor(0);
 }
 
 //------------------------------------------------------------------------
-void MainWindow::on_pushButton2_clicked()
+void MainWindow::on_btnColor2_clicked()
 {
     setColor(1);
 }
@@ -2940,13 +2951,6 @@ void MainWindow::on_btnsetBrightness_clicked()
 }
 
 //------------------------------------------------------------------------
-void MainWindow::on_btnPlaySound_clicked()
-{
-    sound.stop();
-    sound.play();
-}
-
-//------------------------------------------------------------------------
 void MainWindow::on_btnGetVol_clicked()
 {
     ui->leVol->setText(QString::number(getVolumePercent()));
@@ -2968,3 +2972,4 @@ void MainWindow::on_btnsetVol_clicked()
     }
 }
 
+#endif

@@ -486,6 +486,7 @@
 	"MOC_COMPILATION_FILE" : "/Volumes/DATA/qt6pro/radarCap/radarScanSocket/radarscan/radarScan/MyQt6App_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
+		"PLATFORM_MACOS",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_MULTIMEDIA_LIB",

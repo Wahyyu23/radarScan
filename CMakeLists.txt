@@ -37,14 +37,24 @@ qt_add_executable(MyQt6App
     radar.h
 )
 
-# Link Qt modules
-
 # Tambahkan folder tempat qcustomplot berada
-target_include_directories(${PROJECT_NAME}
+target_include_directories(MyQt6App
     PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}       # jika qcustomplot ada di root project
+        ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+# ===== Platform detection =====
+if(UNIX AND NOT APPLE)
+    message(STATUS "Linux build detected (RPi 5) — linking gpiod")
+    find_library(GPIOD_LIBRARY gpiod REQUIRED)
+    target_link_libraries(MyQt6App PRIVATE ${GPIOD_LIBRARY})
+    target_compile_definitions(MyQt6App PRIVATE PLATFORM_LINUX)
+elseif(APPLE)
+    message(STATUS "macOS build detected — gpiod stub mode")
+    target_compile_definitions(MyQt6App PRIVATE PLATFORM_MACOS)
+endif()
+
+# Link Qt modules (common)
 target_link_libraries(MyQt6App PRIVATE
     Qt6::Widgets
     Qt6::SerialPort
@@ -52,10 +62,9 @@ target_link_libraries(MyQt6App PRIVATE
     Qt6::Multimedia
     Qt6::WebSockets
     Qt6::Core
-    gpiod
 )
 
-# Untuk macOS bundling
+# macOS bundle settings
 if(APPLE)
     set_target_properties(MyQt6App PROPERTIES
         MACOSX_BUNDLE TRUE

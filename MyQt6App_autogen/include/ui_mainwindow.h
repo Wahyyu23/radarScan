@@ -20,6 +20,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolBar>
@@ -162,6 +163,22 @@ public:
     QLineEdit *leMotion2;
     QCheckBox *cbSocket2;
     QLabel *label_21;
+    QWidget *tab_7;
+    QPushButton *btnColor1;
+    QPushButton *btnColor2;
+    QPushButton *btnColor3;
+    QPushButton *btnColor4;
+    QPushButton *btnsetBrightness;
+    QLineEdit *leBrightness;
+    QPushButton *btnGetBrightness;
+    QLabel *lBrightness;
+    QSlider *hsBrightness;
+    QPushButton *btnPlaySound;
+    QLineEdit *leVol;
+    QPushButton *btnGetVol;
+    QSlider *hsVol;
+    QLabel *lVol;
+    QPushButton *btnsetVol;
     QCustomPlot *plotRadar;
     QCustomPlot *plottsVelocity;
     QCustomPlot *plottsgram2;
@@ -308,8 +325,7 @@ public:
         frame = new QFrame(tab_2);
         frame->setObjectName("frame");
         frame->setGeometry(QRect(20, 10, 120, 41));
-        frame->setFrameShape(QFrame::Shape::StyledPanel);
-        frame->setFrameShadow(QFrame::Shadow::Raised);
+        frame->setFrameShape(QFrame::Shape::NoFrame);
         cbPresence = new QCheckBox(frame);
         cbPresence->setObjectName("cbPresence");
         cbPresence->setGeometry(QRect(10, 10, 86, 20));
@@ -319,32 +335,28 @@ public:
         frameFallDetection = new QFrame(tab_2);
         frameFallDetection->setObjectName("frameFallDetection");
         frameFallDetection->setGeometry(QRect(20, 50, 121, 41));
-        frameFallDetection->setFrameShape(QFrame::Shape::StyledPanel);
-        frameFallDetection->setFrameShadow(QFrame::Shadow::Raised);
+        frameFallDetection->setFrameShape(QFrame::Shape::NoFrame);
         cbFallDetection = new QCheckBox(frameFallDetection);
         cbFallDetection->setObjectName("cbFallDetection");
         cbFallDetection->setGeometry(QRect(10, 10, 111, 20));
         frameFallDetection_2 = new QFrame(frameFallDetection);
         frameFallDetection_2->setObjectName("frameFallDetection_2");
         frameFallDetection_2->setGeometry(QRect(70, 40, 121, 41));
-        frameFallDetection_2->setFrameShape(QFrame::Shape::StyledPanel);
-        frameFallDetection_2->setFrameShadow(QFrame::Shadow::Raised);
+        frameFallDetection_2->setFrameShape(QFrame::Shape::NoFrame);
         leFallDetection = new QLineEdit(tab_2);
         leFallDetection->setObjectName("leFallDetection");
         leFallDetection->setGeometry(QRect(150, 50, 101, 41));
         frame_2 = new QFrame(tab_2);
         frame_2->setObjectName("frame_2");
         frame_2->setGeometry(QRect(20, 90, 120, 41));
-        frame_2->setFrameShape(QFrame::Shape::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Shadow::Raised);
+        frame_2->setFrameShape(QFrame::Shape::NoFrame);
         cbStandStill = new QCheckBox(frame_2);
         cbStandStill->setObjectName("cbStandStill");
         cbStandStill->setGeometry(QRect(10, 10, 101, 20));
         frame_3 = new QFrame(frame_2);
         frame_3->setObjectName("frame_3");
         frame_3->setGeometry(QRect(60, 40, 120, 41));
-        frame_3->setFrameShape(QFrame::Shape::StyledPanel);
-        frame_3->setFrameShadow(QFrame::Shadow::Raised);
+        frame_3->setFrameShape(QFrame::Shape::NoFrame);
         cbStandStill_2 = new QCheckBox(frame_3);
         cbStandStill_2->setObjectName("cbStandStill_2");
         cbStandStill_2->setGeometry(QRect(10, 10, 101, 20));
@@ -378,8 +390,7 @@ public:
         frame_4 = new QFrame(tab_2);
         frame_4->setObjectName("frame_4");
         frame_4->setGeometry(QRect(20, 130, 121, 41));
-        frame_4->setFrameShape(QFrame::Shape::StyledPanel);
-        frame_4->setFrameShadow(QFrame::Shadow::Raised);
+        frame_4->setFrameShape(QFrame::Shape::NoFrame);
         cbTraceTracking = new QCheckBox(frame_4);
         cbTraceTracking->setObjectName("cbTraceTracking");
         cbTraceTracking->setGeometry(QRect(0, 10, 121, 20));
@@ -408,8 +419,7 @@ public:
         frame_9 = new QFrame(tab_4);
         frame_9->setObjectName("frame_9");
         frame_9->setGeometry(QRect(10, 120, 121, 41));
-        frame_9->setFrameShape(QFrame::Shape::StyledPanel);
-        frame_9->setFrameShadow(QFrame::Shadow::Raised);
+        frame_9->setFrameShape(QFrame::Shape::NoFrame);
         cbTraceTracking2 = new QCheckBox(frame_9);
         cbTraceTracking2->setObjectName("cbTraceTracking2");
         cbTraceTracking2->setGeometry(QRect(0, 10, 121, 20));
@@ -448,8 +458,7 @@ public:
         frame_10 = new QFrame(tab_4);
         frame_10->setObjectName("frame_10");
         frame_10->setGeometry(QRect(10, 0, 120, 41));
-        frame_10->setFrameShape(QFrame::Shape::StyledPanel);
-        frame_10->setFrameShadow(QFrame::Shadow::Raised);
+        frame_10->setFrameShape(QFrame::Shape::NoFrame);
         cbPresence2 = new QCheckBox(frame_10);
         cbPresence2->setObjectName("cbPresence2");
         cbPresence2->setGeometry(QRect(10, 10, 86, 20));
@@ -462,29 +471,25 @@ public:
         frameFallDetection_5 = new QFrame(tab_4);
         frameFallDetection_5->setObjectName("frameFallDetection_5");
         frameFallDetection_5->setGeometry(QRect(10, 40, 121, 41));
-        frameFallDetection_5->setFrameShape(QFrame::Shape::StyledPanel);
-        frameFallDetection_5->setFrameShadow(QFrame::Shadow::Raised);
+        frameFallDetection_5->setFrameShape(QFrame::Shape::NoFrame);
         cbFallDetection2 = new QCheckBox(frameFallDetection_5);
         cbFallDetection2->setObjectName("cbFallDetection2");
         cbFallDetection2->setGeometry(QRect(10, 10, 111, 20));
         frameFallDetection_6 = new QFrame(frameFallDetection_5);
         frameFallDetection_6->setObjectName("frameFallDetection_6");
         frameFallDetection_6->setGeometry(QRect(70, 40, 121, 41));
-        frameFallDetection_6->setFrameShape(QFrame::Shape::StyledPanel);
-        frameFallDetection_6->setFrameShadow(QFrame::Shadow::Raised);
+        frameFallDetection_6->setFrameShape(QFrame::Shape::NoFrame);
         frame_11 = new QFrame(tab_4);
         frame_11->setObjectName("frame_11");
         frame_11->setGeometry(QRect(10, 80, 120, 41));
-        frame_11->setFrameShape(QFrame::Shape::StyledPanel);
-        frame_11->setFrameShadow(QFrame::Shadow::Raised);
+        frame_11->setFrameShape(QFrame::Shape::NoFrame);
         cbStandStill2 = new QCheckBox(frame_11);
         cbStandStill2->setObjectName("cbStandStill2");
         cbStandStill2->setGeometry(QRect(10, 10, 101, 20));
         frame_12 = new QFrame(frame_11);
         frame_12->setObjectName("frame_12");
         frame_12->setGeometry(QRect(60, 40, 120, 41));
-        frame_12->setFrameShape(QFrame::Shape::StyledPanel);
-        frame_12->setFrameShadow(QFrame::Shadow::Raised);
+        frame_12->setFrameShape(QFrame::Shape::NoFrame);
         cbStandStill_6 = new QCheckBox(frame_12);
         cbStandStill_6->setObjectName("cbStandStill_6");
         cbStandStill_6->setGeometry(QRect(10, 10, 101, 20));
@@ -520,7 +525,7 @@ public:
         leFallState->setObjectName("leFallState");
         leFallState->setGeometry(QRect(150, 70, 101, 51));
         leFallState->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 255, 208);"));
-        leFallState->setFrameShape(QFrame::Shape::Box);
+        leFallState->setFrameShape(QFrame::Shape::NoFrame);
         label_4 = new QLabel(tab_3);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(20, 130, 51, 16));
@@ -582,7 +587,7 @@ public:
         leFallState2->setObjectName("leFallState2");
         leFallState2->setGeometry(QRect(150, 80, 101, 51));
         leFallState2->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 255, 208);"));
-        leFallState2->setFrameShape(QFrame::Shape::Box);
+        leFallState2->setFrameShape(QFrame::Shape::NoFrame);
         label_18 = new QLabel(tab_6);
         label_18->setObjectName("label_18");
         label_18->setGeometry(QRect(20, 140, 51, 16));
@@ -609,6 +614,65 @@ public:
         label_21->setObjectName("label_21");
         label_21->setGeometry(QRect(20, 20, 81, 16));
         tw->addTab(tab_6, QString());
+        tab_7 = new QWidget();
+        tab_7->setObjectName("tab_7");
+        btnColor1 = new QPushButton(tab_7);
+        btnColor1->setObjectName("btnColor1");
+        btnColor1->setGeometry(QRect(20, 20, 80, 22));
+        btnColor2 = new QPushButton(tab_7);
+        btnColor2->setObjectName("btnColor2");
+        btnColor2->setGeometry(QRect(100, 20, 80, 22));
+        btnColor3 = new QPushButton(tab_7);
+        btnColor3->setObjectName("btnColor3");
+        btnColor3->setGeometry(QRect(180, 20, 80, 22));
+        btnColor4 = new QPushButton(tab_7);
+        btnColor4->setObjectName("btnColor4");
+        btnColor4->setGeometry(QRect(260, 20, 80, 22));
+        btnsetBrightness = new QPushButton(tab_7);
+        btnsetBrightness->setObjectName("btnsetBrightness");
+        btnsetBrightness->setGeometry(QRect(20, 140, 321, 32));
+        btnsetBrightness->setStyleSheet(QString::fromUtf8(""));
+        leBrightness = new QLineEdit(tab_7);
+        leBrightness->setObjectName("leBrightness");
+        leBrightness->setGeometry(QRect(20, 60, 81, 31));
+        btnGetBrightness = new QPushButton(tab_7);
+        btnGetBrightness->setObjectName("btnGetBrightness");
+        btnGetBrightness->setGeometry(QRect(110, 60, 231, 32));
+        btnGetBrightness->setStyleSheet(QString::fromUtf8(""));
+        lBrightness = new QLabel(tab_7);
+        lBrightness->setObjectName("lBrightness");
+        lBrightness->setGeometry(QRect(280, 100, 57, 31));
+        lBrightness->setFrameShape(QFrame::Shape::Box);
+        hsBrightness = new QSlider(tab_7);
+        hsBrightness->setObjectName("hsBrightness");
+        hsBrightness->setGeometry(QRect(20, 110, 251, 16));
+        hsBrightness->setValue(90);
+        hsBrightness->setOrientation(Qt::Orientation::Horizontal);
+        btnPlaySound = new QPushButton(tab_7);
+        btnPlaySound->setObjectName("btnPlaySound");
+        btnPlaySound->setGeometry(QRect(20, 180, 321, 32));
+        btnPlaySound->setStyleSheet(QString::fromUtf8(""));
+        leVol = new QLineEdit(tab_7);
+        leVol->setObjectName("leVol");
+        leVol->setGeometry(QRect(20, 230, 81, 31));
+        btnGetVol = new QPushButton(tab_7);
+        btnGetVol->setObjectName("btnGetVol");
+        btnGetVol->setGeometry(QRect(110, 230, 231, 32));
+        btnGetVol->setStyleSheet(QString::fromUtf8(""));
+        hsVol = new QSlider(tab_7);
+        hsVol->setObjectName("hsVol");
+        hsVol->setGeometry(QRect(20, 280, 251, 16));
+        hsVol->setValue(90);
+        hsVol->setOrientation(Qt::Orientation::Horizontal);
+        lVol = new QLabel(tab_7);
+        lVol->setObjectName("lVol");
+        lVol->setGeometry(QRect(280, 270, 57, 31));
+        lVol->setFrameShape(QFrame::Shape::Box);
+        btnsetVol = new QPushButton(tab_7);
+        btnsetVol->setObjectName("btnsetVol");
+        btnsetVol->setGeometry(QRect(20, 310, 321, 32));
+        btnsetVol->setStyleSheet(QString::fromUtf8(""));
+        tw->addTab(tab_7, QString());
         plotRadar = new QCustomPlot(centralWidget);
         plotRadar->setObjectName("plotRadar");
         plotRadar->setGeometry(QRect(370, 300, 250, 150));
@@ -648,7 +712,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tw->setCurrentIndex(5);
+        tw->setCurrentIndex(6);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -656,7 +720,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Radar Scan V0.1", nullptr));
         btnGetFallDuration->setText(QCoreApplication::translate("MainWindow", "Get Fall Duration", nullptr));
         btnGetHeightInst->setText(QCoreApplication::translate("MainWindow", "Get Height Inst", nullptr));
         btnGetAngleInst->setText(QCoreApplication::translate("MainWindow", "Get Angle Inst", nullptr));
@@ -729,6 +793,18 @@ public:
         cbSocket2->setText(QCoreApplication::translate("MainWindow", "Socket", nullptr));
         label_21->setText(QCoreApplication::translate("MainWindow", "Motion", nullptr));
         tw->setTabText(tw->indexOf(tab_6), QCoreApplication::translate("MainWindow", "RunView2", nullptr));
+        btnColor1->setText(QCoreApplication::translate("MainWindow", "Color 1", nullptr));
+        btnColor2->setText(QCoreApplication::translate("MainWindow", "Color 2", nullptr));
+        btnColor3->setText(QCoreApplication::translate("MainWindow", "Color 3", nullptr));
+        btnColor4->setText(QCoreApplication::translate("MainWindow", "Color 4", nullptr));
+        btnsetBrightness->setText(QCoreApplication::translate("MainWindow", "set Brightness", nullptr));
+        btnGetBrightness->setText(QCoreApplication::translate("MainWindow", "get Brightness", nullptr));
+        lBrightness->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
+        btnPlaySound->setText(QCoreApplication::translate("MainWindow", "Play Sound", nullptr));
+        btnGetVol->setText(QCoreApplication::translate("MainWindow", "get Volume", nullptr));
+        lVol->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
+        btnsetVol->setText(QCoreApplication::translate("MainWindow", "set Volume", nullptr));
+        tw->setTabText(tw->indexOf(tab_7), QCoreApplication::translate("MainWindow", "Test", nullptr));
     } // retranslateUi
 
 };

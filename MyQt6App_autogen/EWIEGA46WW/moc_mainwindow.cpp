@@ -104,7 +104,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "on_btnSetFallDuration2_clicked",
         "on_btnSetAngle2_clicked",
         "on_btnTestFall_clicked",
-        "on_btnTestFall2_clicked"
+        "on_btnTestFall2_clicked",
+        "on_btnPlaySound_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -264,6 +265,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void()>(63, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_btnTestFall2_clicked'
         QtMocHelpers::SlotData<void()>(64, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_btnPlaySound_clicked'
+        QtMocHelpers::SlotData<void()>(65, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -345,6 +348,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 55: _t->on_btnSetAngle2_clicked(); break;
         case 56: _t->on_btnTestFall_clicked(); break;
         case 57: _t->on_btnTestFall2_clicked(); break;
+        case 58: _t->on_btnPlaySound_clicked(); break;
         default: ;
         }
     }
@@ -369,14 +373,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 58)
+        if (_id < 59)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 58;
+        _id -= 59;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 58)
+        if (_id < 59)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 58;
+        _id -= 59;
     }
     return _id;
 }
