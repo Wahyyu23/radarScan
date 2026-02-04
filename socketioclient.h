@@ -115,7 +115,6 @@ private:
     void setupWebSocket();
     void constructWebSocketUrl();
     void parseSocketIOMessage(const QString &message);
-    void parseEventPayload(const QString &jsonArrayText);
     void handleSocketIOJsonPacket(int type, const QString &data);
     void handleIncomingAck(int ackId, const QJsonValue &data);
 

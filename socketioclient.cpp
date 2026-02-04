@@ -175,39 +175,6 @@ void SocketIOClient::parseSocketIOMessage(const QString &message)
 }
 
 //------------------------------------------------------------------------
-void SocketIOClient::parseEventPayload(const QString &jsonArrayText)
-{
-    QJsonParseError err;
-    QJsonDocument doc = QJsonDocument::fromJson(jsonArrayText.toUtf8(), &err);
-    if (err.error != QJsonParseError::NoError || !doc.isArray()) {
-        qWarning() << "Invalid event JSON:" << jsonArrayText;
-        return;
-    }
-
-    QJsonArray arr = doc.array();
-    if (arr.size() < 2) {
-        qWarning() << "Invalid event format:" << arr;
-        return;
-    }
-
-    QString eventName = arr[0].toString();
-    QJsonValue dataValue = arr[1];
-
-    int ackId = -1;
-    if (arr.size() >= 3 && arr[2].isDouble()) {
-        ackId = arr[2].toInt();
-    }
-
-    qDebug() << "Parse Event:" << eventName
-             << "Data:" << dataValue
-             << "AckId:" << ackId;
-
-    handleIncomingEvent(eventName, dataValue.toObject(), ackId);
-    emit eventReceived(eventName, dataValue.toObject());
-}
-
-
-//------------------------------------------------------------------------
 void SocketIOClient::handleSocketIOJsonPacket(int type, const QString &data)
 {
     switch (type) {
@@ -330,7 +297,16 @@ void SocketIOClient::handleSocketIOJsonPacket(int type, const QString &data)
                 handleIncomingAck(ackId, ackData);
             }
         }
-        else {
+        else if (subType == '0') { // CONNECT
+            QJsonParseError err;
+            QJsonDocument doc = QJsonDocument::fromJson(subData.toUtf8(), &err);
+            if (err.error == QJsonParseError::NoError && doc.isObject()) {
+                QJsonObject obj = doc.object();
+                QString sid = obj["sid"].toString();
+                qDebug() << "Socket.IO connected, SID:" << sid;
+                emit connected(sid);
+            }
+        }else {
             qDebug() << "Unhandled Socket.IO subtype:" << subType << "Data:" << subData;
         }
 

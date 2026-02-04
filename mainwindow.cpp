@@ -941,63 +941,6 @@ void MainWindow::processPayloadSocket()
         }
         // tambah event lain di sini
     }
-
-    /*
-    while (!m_socketQueue.isEmpty()) {
-        quint8 sockQueue = m_socketQueue.dequeue();
-        if (sockQueue == 0){ //no queue
-            break;
-        }else{ //queue available, process
-            socketState = SOCKET_CONNECTING;
-            ui->logEdit->appendPlainText("q0. Queue rcv");
-        }
-    }
-
-    switch (socketState) {
-    case SOCKET_IDDLE:{
-        //ui->logEdit->appendPlainText("q1. queue iddle0");
-        break;
-    }
-    case SOCKET_CONNECTING:{
-        socketState = SOCKET_WAITING_CONNECTED;
-        ui->logEdit->appendPlainText("q2. queue connecting");
-        //socketIO_Client_Connect();
-        break;
-    }
-    case SOCKET_WAITING_CONNECTED:{
-        break;
-    }
-    case SOCKET_CONNECTED:{
-        socketState = SOCKET_SENDING;
-        ui->logEdit->appendPlainText("q3. queue connected");
-        break;
-    }
-    case SOCKET_SENDING:{
-        socketState = SOCKET_WAITING_SENT;
-        ui->logEdit->appendPlainText("q4. queue sending");
-        //socketIO_Client_Write();
-        break;
-    }
-    case SOCKET_WAITING_SENT:{
-        ui->logEdit->appendPlainText("q5. queue waiting sent");
-        break;
-    }
-    case SOCKET_SENT:{
-        socketState = SOCKET_CLOSING;
-        ui->logEdit->appendPlainText("q6. queue disconnected");
-        //socketIO_Client_Disconnect();
-        break;
-    }
-    case SOCKET_CLOSING:{
-        socketState = SOCKET_IDDLE;
-        //ui->logEdit->appendPlainText("q7. queue iddle1");
-        break;
-    }
-    default:
-        //ui->logEdit->appendPlainText("q8");
-        break;
-    }
-*/
 }
 
 //---------------------------------------------------------------------------------------
