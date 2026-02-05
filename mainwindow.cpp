@@ -936,13 +936,13 @@ void MainWindow::processPayloadSocket()
             if(state == "ON"){
 #ifdef PLATFORM_LINUX
                 //GPIO LEd strip
-                setColor(COLOR_LISTEN);
+                setColor(1);
 #endif
             }else{
                 if(state == "OFF"){
 #ifdef PLATFORM_LINUX
                     //GPIO LEd strip
-                    setColor(COLOR_STANDBY);
+                    setColor(3);
 #endif
                 }
             }
@@ -954,13 +954,13 @@ void MainWindow::processPayloadSocket()
             if(state == "ON"){
 #ifdef PLATFORM_LINUX
                 //GPIO LEd strip
-                setColor(COLOR_TALKING);
+                setColor(1);
 #endif
             }else{
                 if(state == "OFF"){
 #ifdef PLATFORM_LINUX
                     //GPIO LEd strip
-                    setColor(COLOR_STANDBY);
+                    setColor(3);
 #endif
                 }
             }
@@ -970,32 +970,59 @@ void MainWindow::processPayloadSocket()
             int currentVol = getVolumePercent();
             client->emitEvent3("VOLUME_GET_ACK",QString::number(currentVol));
 #endif
-        }else if(eventName == "VOLUME_SET" && data.isString()){
+        }else if (eventName == "VOLUME_SET") {
 #ifdef PLATFORM_LINUX
-            int volSet = data.toString().toInt();
-            if(setVolumePercent(volSet)){
-                qDebug() << "Success setVol " << volSet;
-            }
+                int vt = 0;
+
+                if (data.isDouble()) {
+                   vt = data.toInt();  // atau static_cast<int>(data.toDouble())
+                } else if (data.isString()) {
+                   vt = data.toString().toInt();
+                } else if (data.isObject()) {
+                   QJsonObject obj = data.toObject();
+                   vt = obj.value("level").toInt(0); // kalau formatnya object
+                }
+
+                qDebug() << "UI vol Set:" << vt;
+
+                if (vt > 0 && setVolumePercent(vt)) {
+                   qDebug() << "UI vol successfully set to" << vt;
+                } else {
+                    qDebug() << "fail setVol" << vt;
+                }
 #endif
-        }else if(eventName == "PING_DEVICE_UP"){
+        }
+         else if(eventName == "PING_DEVICE_UP"){
 #ifdef PLATFORM_LINUX
-            int brightGet = setBrightnessPercent(80);
-            client->emitEvent3("PING_DEVICE_UP_FRONTEND",QString::number(brightGet));
+                 int brightGet = setBrightnessPercent(80);
+                 client->emitEvent3("PING_DEVICE_UP_FRONTEND",QString::number(brightGet));
 #endif
         }else if(eventName == "SLEEP"){
 #ifdef PLATFORM_LINUX
             int getBright = getBrightness();
             client->emitEvent3("SLEEP_FRONTEND",QString::number(getBright));
 #endif
-        }else if(eventName == "BRIGHTNESS_SET"){
+        }else if (eventName == "BRIGHTNESS_SET") {
 #ifdef PLATFORM_LINUX
-            QString state = data.toString();
-            qDebug() << "Brightness Set:" << state;
-            if(setBrightnessPercent(state.toInt())){
-                qDebug() << "Brightness Set " << state;
-            }
+               int bst = 0;
+
+               if (data.isDouble()) {
+                   bst = data.toInt();  // atau (int)data.toDouble()
+                } else if (data.isString()) {
+                   bst = data.toString().toInt();
+                } else if (data.isObject()) {
+                   QJsonObject obj = data.toObject();
+                   bst = obj.value("level").toInt(0); // kalau formatnya object
+                }
+
+                qDebug() << "Brightness Set:" << bst;
+
+                if (bst > 0 && setBrightnessPercent(bst)) {
+                   qDebug() << "Brightness successfully set to" << bst;
+                }
 #endif
         }
+
         // tambah event lain di sini
     }
 }
@@ -2884,7 +2911,7 @@ void MainWindow::on_btnsetVol_clicked()
 //------------------------------------------------------------------------
 void MainWindow::on_btnConnect_clicked()
 {
-    client->connectToServer("localhost", 3000);
+    client->connectToServer("192.168.1.100", 3000);
 }
 
 //------------------------------------------------------------------------

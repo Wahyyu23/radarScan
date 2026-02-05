@@ -60,7 +60,7 @@ void SocketIOClient::disconnectFromServer()
         m_webSocket->close();
     }
     m_isConnected = false;
-    m_pingTimer->stop();
+    //m_pingTimer->stop();
     m_reconnectTimer->stop();
 }
 
@@ -112,6 +112,7 @@ void SocketIOClient::constructWebSocketUrl()
 
     // Tambahkan timestamp untuk avoid cache
     query.addQueryItem("t", QString::number(QDateTime::currentMSecsSinceEpoch()));
+    query.addQueryItem("auth", "{\"userId\":\"raspberry\"}");
 
     // Tambahkan namespace ke query jika bukan root namespace
     if (m_namespace != "/") {
@@ -139,7 +140,7 @@ void SocketIOClient::onWebSocketConnected()
 void SocketIOClient::onWebSocketDisconnected()
 {
     m_isConnected = false;
-    m_pingTimer->stop();
+    //m_pingTimer->stop();
     qDebug() << "WebSocket disconnected";
 
     scheduleReconnect();
@@ -193,7 +194,7 @@ void SocketIOClient::handleSocketIOJsonPacket(int type, const QString &data)
 
                 // Start ping timer
                 int pingInterval = obj["pingInterval"].toInt(25000);
-                m_pingTimer->start(pingInterval);
+                //m_pingTimer->start(pingInterval);
 
                 emit connected(m_socketId);
 
@@ -623,8 +624,8 @@ void SocketIOClient::sendDeviceReady(int brightness, int volume)
 {
     // Gunakan QRandomGenerator untuk Qt 6
     // Generate device ID yang unik
-    QString deviceId = "sentikoo_" +
-                       QString::number(QRandomGenerator::global()->generate() % 1000);
+    //QString deviceId = "sentikoo_" +
+    //                   QString::number(QRandomGenerator::global()->generate() % 1000);
 
     QJsonObject payload{
         //{"device_id", deviceId},
