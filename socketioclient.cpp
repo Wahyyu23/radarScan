@@ -627,7 +627,8 @@ void SocketIOClient::sendDeviceReady(int brightness, int volume)
                        QString::number(QRandomGenerator::global()->generate() % 1000);
 
     QJsonObject payload{
-        {"device_id", deviceId},
+        //{"device_id", deviceId},
+        {"device_id", "raspberry"},
         {"brightness", brightness},
         {"volume", volume}
     };
