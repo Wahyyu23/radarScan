@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/Hari/Downloads/radarScan/build/cmake_install.cmake",
+		"C:/Users/Hari/Downloads/radarScan/build/modules/volume/cmake_install.cmake",
+		"C:/Users/Hari/Downloads/radarScan/build/modules/volume/services/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
