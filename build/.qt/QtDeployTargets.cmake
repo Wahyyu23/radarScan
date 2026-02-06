@@ -1,0 +1,5 @@
+set(__QT_DEPLOY_TARGET_volume_services_FILE C:/Users/Hari/Downloads/radarScan/build/modules/volume/services/libvolume_services.a)
+set(__QT_DEPLOY_TARGET_volume_services_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_MyQt6App_FILE C:/Users/Hari/Downloads/radarScan/build/MyQt6App.exe)
+set(__QT_DEPLOY_TARGET_MyQt6App_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_MyQt6App_RUNTIME_DLLS C:/Qt/6.10.2/mingw_64/bin/Qt6Widgets.dll;C:/Qt/6.10.2/mingw_64/bin/Qt6SerialPort.dll;C:/Qt/6.10.2/mingw_64/bin/Qt6Multimedia.dll;C:/Qt/6.10.2/mingw_64/bin/Qt6WebSockets.dll;C:/Qt/6.10.2/mingw_64/bin/Qt6Gui.dll;C:/Qt/6.10.2/mingw_64/bin/Qt6Concurrent.dll;C:/Qt/6.10.2/mingw_64/bin/Qt6Network.dll;C:/Qt/6.10.2/mingw_64/bin/Qt6Core.dll)
